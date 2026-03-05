@@ -17,11 +17,11 @@ window.onload = function () {
               const blob = await page.async("blob");
               const imageUrl = URL.createObjectURL(blob);
               pages.push({
-                pageNumber: file.slice(0, -4),
+                pageName: file,
                 blobUrl: imageUrl,
               });
             }
-            pages.sort((a, b) => a.pageNumber - b.pageNumber);
+            pages.sort((a, b) => a.pageName.localeCompare(b.pageName, undefined, { numeric: true }));
             viewPages();
           } else {
             console.log('No image files found in the CBZ file.');
