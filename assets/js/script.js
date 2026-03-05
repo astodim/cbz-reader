@@ -8,7 +8,7 @@ window.onload = function () {
       JSZip.loadAsync(cbzFile)
         .then(async (cbz) => {
           const cbzContent = Object.keys(cbz.files).filter((file) =>
-            file.endsWith(".webp")
+            file.endsWith(".webp") || file.endsWith(".jpg") || file.endsWith(".png") || file.endsWith(".jpeg")
           );
           console.log(cbzContent.length);
           if (cbzContent.length > 1) {
@@ -24,7 +24,7 @@ window.onload = function () {
             pages.sort((a, b) => a.pageNumber - b.pageNumber);
             viewPages();
           } else {
-            console.log('No webp files found in the CBZ file.');
+            console.log('No image files found in the CBZ file.');
           }
         });
     } catch (error) {
